@@ -1,0 +1,223 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints,12pt,solution]{exam}
+\printanswers
+\usepackage{amsmath,amssymb}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{paralist}
+\usepackage{psfrag}
+\usepackage{fullpage}
+\usepackage{fancybox}
+\usepackage{ifthen}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{marvosym}
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\usepackage[ruled,vlined,noresetcount]{algorithm2e}
+\usepackage{enumitem}
+\marksnotpoints
+
+
+\begin{document}
+
+
+\hrule
+\vspace{1mm}
+\noindent 
+\begin{center}
+{\Large CS5691: Pattern Recognition and Machine Learning} \\
+{\large Assignment \#2}
+\end{center}
+\vspace{1mm}
+\noindent 
+\small{\textbf{Topics:} LDA, GMM, DBSCAN \hfill \textbf{Deadline:} 28 April 2023, 11:55 PM} \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enter name and roll number here
+\noindent {\bf Teammate 1:} (your name here) ($\%$ of contribution) \hfill {\bf Roll number:} CSYYXZZZ \\
+\noindent {\bf Teammate 2:} (your name here) ($\%$ of contribution)  \hfill {\bf Roll number:} CSYYXZZZ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2mm}
+\hrule
+
+{\small
+
+\begin{itemize}\itemsep0mm
+\item \textbf{For any doubts regarding questions 1 and 2}, you can mail cs22s013@smail.iitm.ac.in and cs21s043@smail.iitm.ac.in
+\item \textbf{For any doubts regarding question 3}, you can mail cs21d015@smail.iitm.ac.in and cs22s015@smail.iitm.ac.in
+
+\item Please refer to the \textbf{Additional Resources} tab on the Course \href{http://www.cse.iitm.ac.in/~vplab/prml.html}{webpage} for basic programming instructions.
+
+\item This assignment has to be completed in teams of 2. Collaborations outside the team are strictly prohibited.
+
+\item Any kind of plagiarism will be dealt with severely. These include copying text or code from any online sources. These will lead to disciplinary actions according to institute guidelines. Acknowledge any and every resource used.
+
+\item Be precise with your explanations. Unnecessary verbosity will be penalized.
+
+\item Check the Moodle discussion forums regularly for updates regarding the assignment.
+
+\item You should submit a zip file titled \textbf{'rollnumber1\_rollnumber2.zip'} on Moodle where rollnumber1 and rollnumber2 are your institute roll numbers. Your assignment will \textbf{NOT} be graded if it does not contain all of the following:
+\begin{enumerate}
+    \item Type your solutions in the provided \LaTeX ~template file and title this file as \textbf{‘Report.pdf’}. \textbf{State your respective contributions in terms of percentage at the beginning of the report clearly.} Also, embed the result figures in your \LaTeX ~solutions.
+    \item Clearly name your source code for all the programs in \textbf{individual Google Colab files}. Please submit your code only as Google Colab file (.ipynb format). Also, embed the result figures in your Colab code files.
+    % \item \textbf{Avoid including code in 'Report.pdf'}
+\end{enumerate}
+
+\item We highly recommend using \texttt{Python 3.6+} and standard libraries like \texttt{NumPy, Matplotlib, Pandas, Seaborn}. Please use \texttt{Python 3.6+} as the only standard programming language to code your assignments. Please note: the TAs will only be able to assist you with doubts related to Python. 
+
+\item You are expected to code all algorithms from scratch. \textbf{You cannot
+use standard inbuilt libraries for algorithms until and unless asked explicitly}.
+
+
+
+\item \textbf{Any graph that you plot is unacceptable for grading unless it labels the x-axis and
+y-axis clearly.}
+
+% \item \textbf{Please start early and clear all doubts ASAP.}
+
+\item Please note that the TAs will \textbf{only} clarify doubts regarding problem statements. The TAs won't discuss any prospective solution or verify your solution or give hints.  
+
+\item Please refer to the CS5691 PRML course handout for the late penalty instruction guidelines.
+
+
+
+\end{itemize}
+}
+
+\hrule
+
+\vspace{3mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% START HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\question \textbf{[Linear Discriminant Analysis (LDA), Principal Component Analysis (PCA) ]} You will implement dimensionality reduction techniques (LDA, PCA) as part of this question for the dataset1 provided \href{https://drive.google.com/drive/folders/1uVdd8J0BhtuJ6r_93N70zASaRmcoyKiz?usp=sharing}{here}.
+
+Note that you have to implement \textbf{LDA from scratch} without using any predefined libraries (i.e. sklearn, scipy) . However,  you can use \textbf{predefined libraries to implement PCA.}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item (2 marks) Use Linear Discriminant analysis (LDA) to convert dataset1 into the two-dimensional dataset and then visualize the obtained  dataset. Also, perform an analysis on how results will change if we perform normalization (i.e., zero mean, unit variance normalization) on the initial dataset before applying LDA.
+
+
+\begin{solution}\\
+
+\end{solution}
+
+\item (1.5 marks) Use PCA to convert dataset1 into two-dimensional data and then visualize the obtained dataset. Now, compare and contrast the visualizations of the final datasets obtained using LDA and PCA.   
+
+
+
+\begin{solution}\\
+
+\end{solution}
+
+
+\item (1.5 marks) Randomly shuffle and split the obtained dataset from part (a) into a training set (80$\%$) and testing set (20$\%$).  Now build the Bayes classifier using the training set and report the following:
+
+\begin{itemize}
+\item Accuracy on both train and test data.
+  \item Plot of the test data along with your classification boundary.
+  \item confusion matrices on both train and test data.
+\end{itemize}
+
+\begin{solution}\\
+    
+\end{solution}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\question \textbf{[DBSCAN]} 
+In this Question, you are supposed to implement \textbf{DBSCAN algorithm from scratch} on dataset2 provided \href{https://drive.google.com/drive/folders/16a2lk1oi_c6phXj4jKe4fanW6YjQI-TX?usp=share_link}{here} and dataset3 provided \href{https://drive.google.com/drive/folders/1mA9pPvudet3weM6rrx3roWrbKftfqHlt?usp=share_link}{here}. You also need to compare and contrast your observations from above with K-Means applied on both datasets. \textbf{However, you can use predefined libraries to implement K-means.}
+
+
+\begin{enumerate}[label=(\alph*)]
+\item (1 mark) 
+Visualize the data in dataset2. Then, find a suitable \textbf{range of values for epsilon} (a hyperparameter in DBSCAN algorithm) by using  the 'Elbow Curve' of Datapoints plotted between  K-Distance vs Epsilon. For simplicity, take only integer values for epsilon. \textbf{You can use predefined libraries to implement K-distance.}
+
+
+\begin{solution} \\
+
+\end{solution}
+
+\item (2 marks) Implement DBSCAN with the above suitable range of values of epsilon and detect the optimal value of epsilon, which gives the best clustering visually on the dataset. Show a visualization of the clusters formed for the best value of epsilon.
+
+\begin{solution} \\
+
+\end{solution}
+
+
+\item (1.5 marks) Implement K-Means and use it on dataset2 with value of K (number of clusters) set to the optimum number of clusters that you get from (b) above. Suggest various techniques to improve the clustering by KMeans in this case. 
+\begin{solution} \\
+
+\end{solution}
+
+\item (1.5 marks) Show a visualization of the data in dataset3. Use your implementation of DBSCAN with \texttt{minPts=15} on dataset3. Plot 'Elbow curve' to get an optimal range of values for \texttt{eps}. Detect the optimal value of epsilon which gives the best clustering visually on the dataset. Show a visualization of the clusters formed for the best value of epsilon.
+
+\begin{solution} \\
+
+\end{solution}
+
+\item (1 mark) Now perform KMeans with K=3. Write your observations for obtained results in (d) and (e). Did we give you bad initialization values?
+
+\begin{solution} \\
+
+\end{solution}
+
+
+\item (1 mark) Based on all your learnings from this question, state the relative pros and cons of KMeans vs DBSCAN.
+
+\begin{solution} \\
+
+\end{solution}
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question \textbf{[GMM]} 
+In this question, you are supposed to implement the Expectation-Maximization algorithm for Gaussian mixture models on the given dataset4. The data can be found \href{https://drive.google.com/drive/folders/1uVdd8J0BhtuJ6r_93N70zASaRmcoyKiz}{here}. 
+
+\begin{enumerate}[label=(\alph*)]
+
+\item (3 marks) Implement EM for GMM and plot the log-likelihood as a function of iterations.
+
+\begin{solution}
+
+
+\end{solution}
+
+\item (2 marks) Run EM for different numbers of Gaussians (k)(Try 2,3,4,5,6). Plot figures that can help in visualization and also log likelihood as a function of iteration for different values of k. Report the observations.
+
+\begin{solution}
+
+\end{solution}
+
+\item (2 marks)  Find the optimal k. There are several metrics like Silhouette score, Distance between GMMs, and Bayesian information criterion (BIC), or even you can use log-likelihood from the last question to infer. Give a clear explanation for your decision.\\
+Note: \textbf{You can use third-party libraries - sklearn or any other only in this subsection.}
+
+\begin{solution}
+
+
+\end{solution}
+
+
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{questions}
+\end{document}
